@@ -49,7 +49,7 @@
   View.prototype.setupGrid = function () {
     this.$el.html(this.board.render())
     this.$el.append("<br><div id='score'>" +
-      "<b>High Schore: " + this.topScore + "<br>" +
+      "<b>High Score: " + this.topScore + "<br>" +
       "<b>Score: </b>" + this.board.score +"</div>")
   }
 
