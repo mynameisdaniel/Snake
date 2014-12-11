@@ -89,7 +89,7 @@
     if (lastIndex[0] === this.apples[i][0] && lastIndex[1] === this.apples[i][1]) {
           this.snake.grow();  
           this.apples.splice(i, 1);
-          this.score +=1
+          this.score +=10
         }
       }
   }

@@ -36,7 +36,7 @@
 
   View.prototype.setupGrid = function () {
     this.$el.html(this.board.render())
-    this.$el.append("<br><br><div id='score'>Score: " + this.board.score +"</div>")
+    this.$el.append("<br><br><div id='score'><b>Score: </b>" + this.board.score +"</div>")
   }
 
   View.prototype.step = function () {
@@ -48,7 +48,7 @@
     this.$el.children().remove();
     this.setupGrid();
     } else {
-      this.$el.find('#score').html("Score: " + this.board.score + " GameOver :(");
+      this.$el.find('#score').html("<b>Score: </b>" + this.board.score + "<b> GameOver :(</b>");
     }
   }
   
