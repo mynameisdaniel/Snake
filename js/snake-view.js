@@ -9,7 +9,8 @@
     this.board = new Snake.Board(snake);
     this.setupGrid();
     this.bindEvents();
-
+    this.pause = false;
+    this.topScore = 0;
   }
   
   View.prototype.bindEvents = function () {
@@ -18,6 +19,17 @@
   
   View.prototype.makeMove = function (event) {
     switch(event.keyCode) {
+    case 82:
+      this.snake = new Snake.Serpent();
+      this.board = new Snake.Board(this.snake);
+      break;
+    case 32:
+      if (this.pause){
+        this.pause = false;
+      } else {
+        this.pause = true;
+      }
+      break;
     case 37:
       this.snake.turn("W")
       break;
@@ -36,19 +48,34 @@
 
   View.prototype.setupGrid = function () {
     this.$el.html(this.board.render())
-    this.$el.append("<br><br><div id='score'><b>Score: </b>" + this.board.score +"</div>")
+    this.$el.append("<br><div id='score'>" +
+      "<b>High Schore: " + this.topScore + "<br>" +
+      "<b>Score: </b>" + this.board.score +"</div>")
+  }
+
+  View.prototype.updateScore = function () {
+    if (this.board.score > this.topScore) {
+      this.topScore = this.board.score;
+    }
   }
 
   View.prototype.step = function () {
-    if (this.snake.alive()){
+    if (!this.pause){
+      this.$el.find('#score').html(
+        "<b>High Score: " + this.topScore + "<br>" +
+        "<b>Score: </b>" + this.board.score + "<b> Paused!</b>");
+    } else if (this.snake.alive()){
     this.snake.move();
     this.board.updateGrid(this.snake);
     this.board.makeApple();
     this.board.eatApple();
     this.$el.children().remove();
     this.setupGrid();
+    this.updateScore();
     } else {
-      this.$el.find('#score').html("<b>Score: </b>" + this.board.score + "<b> GameOver :(</b>");
+      this.$el.find('#score').html(
+        "<b>High Score: " + this.topScore + "<br>" +
+        "<b>Score: </b>" + this.board.score + "<b> GameOver :(</b>");
     }
   }
   
