@@ -3,8 +3,6 @@ Snake
 
 [Live Deployment] [snake]
 
-Enjoy the classic with Javascript and jQuery. Sorry it's not too pretty.
-
-Use the arrows to move
+Enjoy this classic game written in Javascript and jQuery. Apologies for the graphics. Use the arrows keys to move.
 
 [snake]: http://mynameisdaniel.github.io/Snake/
