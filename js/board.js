@@ -52,7 +52,7 @@
       htmlContent +="<div class='row' style='display: block;clear: left;'>"
       for (var j = 0; j < SIZE; j++) {
           htmlContent += "<div class='square' data-x=" + i +  " data-y=" + j + 
-        " style='float:left;border:1px solid black; width: 25px; height: 25px;"
+        " style='float:left;border:1px solid black; width: 20px; height: 20px;"
           if (this.grid[i][j] === "S"){
             htmlContent += "background-color: green"
           } else if (this.grid[i][j] === "A"){
